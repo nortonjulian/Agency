@@ -1,0 +1,32 @@
+{% extends 'pet_list.html' %}
+
+{% block title %}Adopt A Pet{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Add a Pet</h1>
+    <form action="/add" method="POST">
+        <div>
+            <label for="pet_name">Pet Name:</label>
+            <input type="text" name="pet_name" placeholder="Enter the pet's name">
+        </div>
+        <div>
+            <label for="pet_species">Species:</label>
+            <input type="text" name="pet_species" placeholder="Enter the pet's species">
+        </div>
+        <div>
+            <label for="photo_url">Photo URL</label>
+            <input type="text" name="phot_url" placeholder="Upload the pet's photo">
+        </div>
+        <div>
+            <label for="pet_age">Age</label>
+            <input type="text" name="pet_age" placeholder="Enter the pet's age">
+        </div>
+        <div>
+            <label for="notes">Notes</label>
+            <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Add notes about the pet"></textarea>
+        </div>
+        <button>Add!</button>
+    </form>
+</body>
+{% endblock %}
