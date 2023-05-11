@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    {{ form.hidden_tag() }}
+{{ form.hidden_tag() }}
 
     {% for field in form if field.widget.input_type != 'hidden' %}
 
@@ -23,6 +13,4 @@
             {% endif %}
         </span>
     </div>
-    {% endfor %}
-</body>
-</html>
+{% endfor %}
