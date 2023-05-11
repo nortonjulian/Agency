@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    {{ form.hidden_ tag() }}
+    {{ form.hidden_tag() }}
 
-    {% for field in form if filed.widget.input_type != 'hidden' %}
+    {% for field in form if field.widget.input_type != 'hidden' %}
 
     <div>
         {{ field.label }}

@@ -5,7 +5,7 @@ from forms import AddPetForm, EditPetForm
 
 app = Flask(__name__)
 app.app_context().push()
-db.create_all()
+
 
 app.config['SECRET_KEY'] = "secret"
 
