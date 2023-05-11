@@ -1,10 +1,11 @@
-from flask import Flask, render_template, flash, redirect, jsonify
+from flask import Flask, render_template, flash, redirect, jsonify, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
 from forms import AddPetForm, EditPetForm
 
 app = Flask(__name__)
 app.app_context().push()
+db.create_all()
 
 app.config['SECRET_KEY'] = "secret"
 
@@ -12,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///adopt"
 app.config['SQLACHEMY_TRACK_MODIFICATIONS'] = "secret"
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'secret'
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 
 toolbar = DebugToolbarExtension(app)
 connect_db(app)
@@ -35,12 +36,12 @@ def add_pet():
         age = form.age.data
         species = form.species.data
         photo_url = form.photo_url.data
-        notes = form.photo_url.data
+        notes = form.notes.data
         new_pet = Pet(name=name, age=age, species=species, photo_url=photo_url, notes=notes)
         db.session.add(new_pet)
         db.session.commit()
         flash(f"{new_pet.name} added!")
-        return redirect("pet_list.html")
+        return redirect(url_for("/"))
     else:
         return render_template("add_pet_form.html", form=form)
 
@@ -55,8 +56,9 @@ def edit_pet(pid):
         pet.photo_url = form.photo_url.data
         pet.notes = form.notes.data
         pet.available = form.available.data
+        db.session.commit()
         flash(f"Pet {pid} updated!")
-        return redirect("pet_list.html")
+        return redirect("/")
     else:
         return render_template("pet_edit.html", form=form, pet=pet)
 

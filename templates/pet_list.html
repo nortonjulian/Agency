@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adoption Agency</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <h1>Pet List</h1>
-    <div>
+{% extends '_form.html' %}
+
+{% block content %}
         {% for pet in pets %}
         <div>
             {% if pet.photo_url %}
@@ -25,7 +16,5 @@
         {% endfor %}
     </div>
     <a href="/add">Add a Pet</a>
-    {% block content %}
-    {% endblock %}
-</body>
-</html>
+
+{% endblock %}

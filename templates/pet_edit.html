@@ -1,4 +1,4 @@
-{% extends 'pet_list.html' %}
+{% extends '_form.html' %}
 
 {% block title %}Edit{% endblock %}
 
@@ -10,26 +10,7 @@
 {% endif %}
 
 <form method="POST">
-    <div>
-        <label for="pet_name">Pet Name</label>
-        <input type="text" name="pet_name" placeholder="Update pet's name" value="{{ pet.name }}">
-    </div>
-    <div>
-        <label for="pet_species">Species</label>
-        <input type="text" name="last_name" placeholder="Update pet's species" value="{{ pet.species}}">
-    </div>
-    <div>
-        <label for="pet_age">Age</label>
-        <input type="text" name="pet_age" placeholder="Update pet's age" value="{{ pet.age }}">
-    </div>
-    <div>
-        <label for="photo_url">Photo URL</label>
-        <input type="text" name="photo_url" placeholder="Update pet's image" value="{{ pet.photo_url() }}">
-    </div>
-    <div>
-        <label for="notes">Notes</label>
-        <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Provide additional notes" value="{{ pet.notes }}"></textarea>
-    </div>
+    {% include "_form.html" %}
     <input type="submit" value="Save Changes">
 </form>
 {% endblock %}
