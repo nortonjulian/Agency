@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, jsonify, url_for
+from flask import Flask, render_template, flash, redirect, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
 from forms import AddPetForm, EditPetForm
@@ -10,7 +10,7 @@ app.app_context().push()
 app.config['SECRET_KEY'] = "secret"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///adopt"
-app.config['SQLACHEMY_TRACK_MODIFICATIONS'] = "secret"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'secret'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True

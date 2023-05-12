@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% for pet in pets %}
+{% extends 'base.html' %}
+
+{% block content %}
+{% for pet in pets %}
     <div>
         {% if pet.photo_url %}
         <img src="{{ pet.photo_url }}" alt="{{ pet.name }}">
@@ -22,5 +16,4 @@
     {% endfor %}
     </div>
     <a href="/add">Add a Pet</a>
-</body>
-</html>
+{% endblock %}

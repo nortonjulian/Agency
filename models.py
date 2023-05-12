@@ -15,7 +15,7 @@ class Pet(db.Model):
     notes = db.Column(db.Text)
     available = db.Column(db.Boolean, nullable=False, default=True)
 
-    def photo_url(self):
+    def image_url(self):
         """Return image for pet"""
         return self.photo_url
 
